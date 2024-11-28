@@ -185,13 +185,17 @@ clear_button.grid(row=6, column=1)
 
 # Create Listbox and Scrollbar
 listbox = tk.Listbox(root, height=10, width=50)
-listbox.grid(row=7, column=0, columnspan=2, rowspan=6)
+listbox.grid(row=7, column=0, columnspan=2, rowspan=6, sticky="nsew")
 
 scrollbar = tk.Scrollbar(root)
-scrollbar.grid(row=7, column=2, rowspan=6)
+scrollbar.grid(row=7, column=2, rowspan=6, sticky="ns")
 
 listbox.config(yscrollcommand=scrollbar.set)
 scrollbar.config(command=listbox.yview)
+
+# Configure grid to expand with window
+root.grid_rowconfigure(7, weight=1)
+root.grid_columnconfigure(1, weight=1)
 
 # Run the application
 root.mainloop()
